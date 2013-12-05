@@ -1,0 +1,1 @@
+samplesViewNoModel jsp page
