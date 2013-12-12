@@ -1,5 +1,7 @@
 package com.wdxxl.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.wdxxl.form.User;
+import com.wdxxl.model.AppUser;
 import com.wdxxl.service.ISampleService;
 
 @Controller
@@ -164,9 +166,10 @@ public class SampleController {
 	 * @return
 	 */
 	@RequestMapping("/showCreateUser") 
-	public ModelAndView showCreateUser(){
+	public ModelAndView showCreateUser(HttpServletRequest request){
+		request.getSession(true).setAttribute("t", "nothing");
 		ModelAndView modelAndView = new ModelAndView("createUser");
-		modelAndView.addObject("user", new User("haha",1L));
+		modelAndView.addObject("user", new AppUser("haha","password"));
 		return modelAndView;
 	}
 	
@@ -176,8 +179,8 @@ public class SampleController {
 	 */
 	@RequestMapping(value="/createUser", method=RequestMethod.POST)  
 	@ResponseBody
-	public String createUser(User user){
-		return "SUCCESS"+user.toString();
+	public String createUser(HttpServletRequest request, AppUser appUser){
+		return "SUCCESS"+appUser.toString();
 	}
 	
 }

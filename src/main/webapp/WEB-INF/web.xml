@@ -1,7 +1,8 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-	version="2.5">
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_3.0.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	version="3.0">
   <display-name>Archetype Created Web Application</display-name>
 <!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
 	<context-param>
@@ -41,12 +42,11 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 	
-	<!-- Process Filters -->
+	<!-- Process Filters (LoginFilter will also filter /resources/ )-->
 	<filter>
         <filter-name>loginFilter</filter-name>
         <filter-class>com.wdxxl.filter.LoginFilter</filter-class>
     </filter>
- 
     <filter-mapping>
         <filter-name>loginFilter</filter-name>
         <url-pattern>/*</url-pattern>
@@ -58,4 +58,15 @@
 		<welcome-file></welcome-file>
 	</welcome-file-list> 
 	 -->
+	 
+	 
+	<!-- Setting for session. 1 mins for timeout (add jssessionid in URL this one need to check) -->
+	<listener>
+		<listener-class>com.wdxxl.listener.SessionListener</listener-class>
+	</listener>
+	<session-config>
+		<session-timeout>1</session-timeout>
+		<tracking-mode>URL</tracking-mode>
+	</session-config>
+	
 </web-app>

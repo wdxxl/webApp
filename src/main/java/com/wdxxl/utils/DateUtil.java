@@ -1,5 +1,8 @@
 package com.wdxxl.utils;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -20,4 +23,11 @@ public class DateUtil {
     	}
 		return timeStampString;
 	}
+	
+	public static Date parseWithDefaultFormat(String date) throws ParseException{
+		String format = "yyyy-MM-dd hh:mm:ss";
+		SimpleDateFormat fmt = new SimpleDateFormat(format);
+		return fmt.parse(date);
+	}
+	
 }
