@@ -2,6 +2,8 @@ package com.wdxxl.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +19,8 @@ import com.wdxxl.service.ISampleService;
 
 @Controller
 public class SampleController {
+	private static Logger logger =  LoggerFactory.getLogger(SampleController.class);
+	
 	@Autowired
 	private ISampleService sampleService;
 

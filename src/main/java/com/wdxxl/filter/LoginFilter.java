@@ -12,6 +12,9 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.wdxxl.controller.login.LoginedUsers;
 
 /**
@@ -23,6 +26,8 @@ import com.wdxxl.controller.login.LoginedUsers;
  *
  */
 public class LoginFilter implements Filter {
+	private static Logger logger  =  LoggerFactory.getLogger(LoginFilter.class );
+	
 	private Pattern allowedResources;
 	
 	private final static String resPattern_Default = ".*((login)|(showLogin)|(resources/)).*";
@@ -43,8 +48,8 @@ public class LoginFilter implements Filter {
 	
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain chain) throws IOException, ServletException{
-		System.out.println("LoginFilter doFilter.");
-			
+		logger.debug("[IN] doFilter.");
+		
 		HttpServletRequest httpServletRequest = (HttpServletRequest) request;
 		boolean doContinue = true;
 		if(isUrlNeedsFilter(httpServletRequest)){// used to check is /resources/ and /login and /showLogin or not
@@ -54,6 +59,7 @@ public class LoginFilter implements Filter {
 		}
 		
 		if(doContinue == false){
+			logger.debug("Redirect to showLogin Page¡£ URI info ({})", httpServletRequest.getRequestURI());
 			HttpServletResponse httpServletResponse = (HttpServletResponse) response;
 			httpServletResponse.sendRedirect(httpServletResponse.encodeRedirectURL(httpServletRequest.getContextPath() + "/showLogin"));
 			return;

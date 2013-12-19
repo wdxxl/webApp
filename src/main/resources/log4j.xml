@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<!-- Appenders Console -->
+	<appender name="myConsole" class="org.apache.log4j.ConsoleAppender">  
+        <layout class="org.apache.log4j.PatternLayout">  
+            <param name="ConversionPattern" value="[%d{ISO8601} (%-5p)] %c:%L - %m%n" />  
+        </layout>  
+        <!--user the filter to set logger priority (please notice the level order Min-debug Max-warn)-->  
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">  
+            <param name="levelMin" value="debug" />  
+            <param name="levelMax" value="warn" />  
+            <param name="AcceptOnMatch" value="true" />  
+        </filter>  
+    </appender>
+    
+    <!-- Appenders Daily File (\apache-tomcat-7.0.42\logs\webApp.log.2013-12-16 && \apache-tomcat-7.0.42\logs\webApp.log) -->
+    <appender name="dailyFile" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="${catalina.home}/logs/webApp.log" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<param name="Append" value="true" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{ISO8601} (%-5p)] %c:%L - %m%n" />
+		</layout>
+	</appender>
+    
+    <!-- 3rdparty Loggers -->
+		<!-- ignore spring log -->
+    <logger name="org.springframework">
+		<level value="OFF" />
+	</logger>
+		<!-- ignore hibernate log -->
+	<logger name="org.hibernate">
+		<level value="OFF" />
+	</logger>
+    
+	<!-- Root Logger -->
+	<root>
+		<priority value="debug" /> <!--  WARN < INFO < DEBUG -->
+		<appender-ref ref="myConsole"/>   
+		<appender-ref ref="dailyFile"/>   
+	</root>
+
+</log4j:configuration>
+
+<!-- %c -->
+	<!-- %c -->
+		<!-- com.wdxxl.filter.LoginFilter -->
+	<!-- %c{2} -->
+		<!-- filter.LoginFilter -->
+	<!-- %-20.25c -->
+		<!-- .wdxxl.filter.LoginFilter ()-->
+<!-- %d -->
+	<!-- %d{yyyy/MM/dd HH:mm:ss,SSS} -->
+		<!-- [2013/12/13 16:28:01,626] -->
+	<!-- %d{ABSOLUTE} -->
+		<!-- [16:28:01,626] -->
+	<!-- %d{DATE} -->
+		<!-- [13 十二月 2013 16:28:01,626] -->
+	<!-- %d{ISO8601} -->
+		<!-- [2013-12-13 16:28:01,626] -->
+<!-- %L %l -->
+	<!-- %L -->
+		<!-- 50 (show line number) -->
+	<!-- %l -->
+		<!-- com.wdxxl.filter.LoginFilter.doFilter(LoginFilter.java:50) -->
+<!-- %m%n -->
+	<!-- show message and change another line -->
+<!-- %p -->
+	<!-- %-5p -->
+		<!-- [INFO ] (if length less than 5, fill space holder the place) -->
+<!-- %r -->
+	<!--  6539 (log message cost millisecond)-->
+<!-- %t -->
+	<!-- http-bio-9090-exec-7 (Thread information)-->
+
+<!-- ################################################################################################# -->
+
+<!-- 
+Level.ALL打开所有日志
+Level.DEBUG 用于调试
+Level.INFO 用于运行过程
+Level.WARN 用于潜在的错误
+Level.ERROR 用于错误事件
+Level.FATAL 用于严重错误时间
+Level.OFF 关闭所有日志
+ -->
+<!-- WARN < INFO < DEBUG -->
