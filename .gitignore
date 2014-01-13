@@ -1,1 +1,20 @@
-/target
+# generated target #
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# Eclipse specific #
+.metadata
+*.tmp
+*.bak
+*.swp
+*~.nib
+.settings/
+target/
+
+*local*.properties
+
+/src/main/java/META-INF/persistence.xml

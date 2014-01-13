@@ -34,6 +34,7 @@ public class SampleController {
 		sampleService.printSample();
 		ModelAndView modelAndView = new ModelAndView("samplesModelAndView");
 		modelAndView.addObject("msg", "samplesModelAndView1");
+		logger.debug("goToSamplesModelAndView1");
 		return modelAndView;
 	}
 	
