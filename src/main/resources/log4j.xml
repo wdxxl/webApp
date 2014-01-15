@@ -26,6 +26,10 @@
 	</appender>
     
     <!-- 3rdparty Loggers -->
+    <!-- ignore jboss log -->
+	<logger name="org.jboss">
+		<level value="OFF" />
+	</logger>
 		<!-- ignore spring log -->
     <logger name="org.springframework">
 		<level value="OFF" />

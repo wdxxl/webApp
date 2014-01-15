@@ -24,7 +24,7 @@
 	<!-- session Factory -->
 	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"/>
-		<property name="packagesToScan" value="com.wdxxl.model" />
+		<property name="packagesToScan" value="com.wdxxl.domain" />
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
@@ -49,6 +49,7 @@
 	<beans profile="dev">
 		<!-- property place holder USED AS if('local.db.dev.properties' existed, it will override the 'db.dev.properties') -->
 		<!-- BTW: it is not good you submit this local.db.dev.properties file to SVN or Git -->
+		<!-- BTW: check the .gitignore file. when push to server this file will ignore. -->
 		<context:property-placeholder ignore-resource-not-found="true" location="classpath:db.dev.properties,classpath:local.db.dev.properties" />
 	</beans>
 	

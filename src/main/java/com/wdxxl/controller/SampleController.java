@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.wdxxl.model.AppUser;
+import com.wdxxl.domain.AppUser;
 import com.wdxxl.service.ISampleService;
 
 @Controller

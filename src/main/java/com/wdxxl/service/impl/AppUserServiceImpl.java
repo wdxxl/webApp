@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.wdxxl.dao.IAppUserDao;
-import com.wdxxl.model.AppUser;
+import com.wdxxl.domain.AppUser;
 import com.wdxxl.service.IAppUserService;
 
 @Service

@@ -1,7 +1,10 @@
 package com.wdxxl.dao;
 
-import com.wdxxl.model.AppUser;
+import java.util.List;
+
+import com.wdxxl.domain.AppUser;
 
 public interface IAppUserDao {
 	public AppUser getAppUserByLoginName(String loginName);
+	public List<AppUser> getAppUserList();
 }

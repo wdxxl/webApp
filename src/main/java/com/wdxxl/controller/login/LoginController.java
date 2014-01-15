@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.wdxxl.model.AppUser;
+import com.wdxxl.domain.AppUser;
 import com.wdxxl.service.IAppUserService;
 import com.wdxxl.utils.Constants;
 import com.wdxxl.validator.AppUserValidator;

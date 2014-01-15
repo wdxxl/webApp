@@ -9,7 +9,7 @@ import java.util.concurrent.locks.ReentrantLock;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import com.wdxxl.model.AppUser;
+import com.wdxxl.domain.AppUser;
 import com.wdxxl.utils.Constants;
 
 
