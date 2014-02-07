@@ -21,7 +21,7 @@
 		<property name="maxActive" value="${dbcp.maxActive}" />
 	</bean>
 	  
-	<!-- session Factory -->
+	<!-- session Factory For Hibernate4 -->
 	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"/>
 		<property name="packagesToScan" value="com.wdxxl.domain" />
@@ -33,12 +33,28 @@
 				<prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
 			</props>
 		</property>
+		<!-- Hibernate Envers to Audit log Changed Tabel Records 
+		 <property name="eventListeners">
+            <map>
+                <entry key="post-insert" value-ref="envers"/>
+                <entry key="post-update" value-ref="envers"/>
+                <entry key="post-delete" value-ref="envers"/>
+                <entry key="post-collection-recreate" value-ref="envers"/>
+                <entry key="pre-collection-remove" value-ref="envers"/>
+                <entry key="pre-collection-update" value-ref="envers"/>
+            </map>
+        </property>
+        -->
 	</bean>
+	
+	<!-- Hibernate Envers Audit Event Listener 
+	<bean id="envers" class="org.hibernate.envers.event.AuditEventListener" />
+	-->
 	
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">  
     	<property name="dataSource" ref="dataSource"/>  
 	</bean>
-		
+
 	<bean name="txManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
