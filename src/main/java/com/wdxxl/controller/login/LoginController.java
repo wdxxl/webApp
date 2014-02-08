@@ -47,9 +47,16 @@ public class LoginController {
 		return modelAndView;
 	}
 	
+	@RequestMapping("/showSpringSecurityLogin") 
+	public ModelAndView showSpringSecurityLogin(HttpServletRequest request){
+		logger.debug("LoginController Show showSpringSecurityLogin.");
+		ModelAndView modelAndView = new ModelAndView("loginSpringSecurity");
+		return modelAndView;
+	}
+	
 	/**
 	 * POST Login User Message, both time to use Spring Validator to validate the login user.
-	 * BindingResult to check validation hasErrors or not¡£
+	 * BindingResult to check validation hasErrors or notï¿½ï¿½
 	 * 
 	 * @param httpRequest
 	 * @param httpResponse
@@ -94,7 +101,7 @@ public class LoginController {
 	boolean isUserExist(String loginName, HttpServletRequest request) {
 		AppUser user = appUserService.getAppUserByLoginName(loginName);
 		if (user != null) {
-			logger.debug("User Existed¡£");
+			logger.debug("User Existedï¿½ï¿½");
 			String uuid = UUID.randomUUID().toString();
 			request.getSession(true).setAttribute(Constants.TOKEN_KEY, uuid);
 			//request.getSession(true)

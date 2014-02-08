@@ -11,7 +11,7 @@ Please check below:
   b. Bootstrap v3.0.3
   c. 
   
-2. Hibernate Envers
+2. Hibernate4 GenericDao
 
-3. 
+3. Spring Security
 

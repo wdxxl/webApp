@@ -1,1 +1,1 @@
-<jsp:forward page="/showLogin"></jsp:forward>
+<jsp:forward page="/showSpringSecurityLogin"></jsp:forward>

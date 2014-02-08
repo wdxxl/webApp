@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/security
+	http://www.springframework.org/schema/security/spring-security.xsd">
+	
+	<security:http pattern="/resources/**" security="none"/>
+	
+	<security:http>
+	 	<security:intercept-url pattern="/login*" access="ROLE_ANONYMOUS,ROLE_USER"/>
+	 	<security:intercept-url pattern="/j_spring_security_check*" access="ROLE_ANONYMOUS,ROLE_USER"/>
+		<security:intercept-url pattern="/**" access="ROLE_ANONYMOUS,ROLE_USER"/>
+	 	<security:form-login default-target-url="/bootstrap/welcome" 
+	 		login-page="/showSpringSecurityLogin" 
+	 		authentication-failure-url="/"/>
+	 	<security:logout logout-success-url="/showSpringSecurityLogin"/>
+	</security:http>
+	
+	<security:authentication-manager>
+		<security:authentication-provider>
+			<security:jdbc-user-service data-source-ref="dataSource"
+			users-by-username-query="SELECT LOGIN_NAME AS username, password, 1 AS enabled FROM app_user WHERE LOGIN_NAME=?"
+			authorities-by-username-query="SELECT ? AS username, 'ROLE_USER' AS authority FROM APP_USER"/>
+		</security:authentication-provider>
+	</security:authentication-manager>
+	
+	
+	<import resource="/common-db-config.xml"/>
+	<!-- AppCxtWrapper for reading some other properties -->
+</beans>

@@ -1,5 +1,7 @@
 package com.wdxxl.controller;
 
+import java.security.Principal;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -27,11 +29,13 @@ public class BootstrapController {
 	 * @return
 	 */
 	@RequestMapping("/welcome")
-	public ModelAndView goToWelcome(HttpServletRequest httpRequest, 
-			HttpServletResponse httpResponse){
+	public ModelAndView goToWelcome(
+			HttpServletRequest httpRequest, 
+			HttpServletResponse httpResponse,
+			Principal principal){
 		logger.debug("[IN] goToWelcome.");
-		String uuid = (String) httpRequest.getSession().getAttribute(Constants.TOKEN_KEY);
-		logger.debug("uuid = "+uuid);
+		
+		logger.debug("Name = "+principal.getName());
 		
 		ModelAndView modelAndView = new ModelAndView("bootstrap/welcome");
 		modelAndView.addObject("msg", "welcome");

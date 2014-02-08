@@ -16,9 +16,7 @@ import org.hibernate.criterion.DetachedCriteria;
 public interface IGenericDao <T extends Serializable, ID extends Serializable>{
 	/**
      * Find an object T with the specified id.
-     *
      * @param id of the desired object.
-     *
      * @return Object with the specified id
      */
 	T findById(ID id);
@@ -26,7 +24,6 @@ public interface IGenericDao <T extends Serializable, ID extends Serializable>{
     /**
      * Call save to insert a new object into the persistent store or update a preexisting object that has
      * been modified.
-     *
      * @param entity to save.
      */
 	void save(T entity);

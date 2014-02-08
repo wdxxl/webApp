@@ -89,6 +89,27 @@
 		<scope>test</scope>
 	</dependency>
 	
+<!-- Spring Security Start -->
+	<!-- Spring security config (config) -->
+	<dependency>
+		<groupId>org.springframework.security</groupId>
+		<artifactId>spring-security-config</artifactId>
+		<version>3.2.0.RELEASE</version>
+	</dependency>
+	<!-- Spring security core (core/aop3.2.6) -->
+	<dependency>
+		<groupId>org.springframework.security</groupId>
+		<artifactId>spring-security-core</artifactId>
+		<version>3.2.0.RELEASE</version>
+	</dependency>
+	<!-- Spring security web (web) -->
+	<dependency>
+		<groupId>org.springframework.security</groupId>
+		<artifactId>spring-security-web</artifactId>
+		<version>3.2.0.RELEASE</version>
+	</dependency>
+<!-- Spring Security End -->      
+      
 	<!-- Hibernate Envers(Envers/commmons-annotation/entitymanager/cglib/asm/javassit) 
 	<dependency>
 		<groupId>org.hibernate</groupId>
