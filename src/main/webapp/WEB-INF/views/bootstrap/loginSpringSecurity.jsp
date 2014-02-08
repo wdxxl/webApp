@@ -13,6 +13,17 @@
 	<script type="text/javascript" src="<c:url value='/resources/jQuery/jquery-1.10.2.js'></c:url>"></script>
 	<!-- Bootstrap Core JavaScript file -->
 	<script type="text/javascript" src="<c:url value='/resources/bootstrap/js/bootstrap.min.js'></c:url>"></script>
+	
+	<style>
+	.errorblock {
+		color: #ff0000;
+		background-color: #ffEEEE;
+		border: 3px solid #ff0000;
+		padding: 8px;
+		margin: 16px;
+	}
+	</style>
+
 </head>
 <body>
 	<div class="container">
@@ -24,7 +35,15 @@
 					<span class="section-page-title">Web App Spring Security - Login</span>
 				</div>
 				<div class="panel-body">
-					<form class="form-horizontal" action="<c:url value='j_spring_security_check'></c:url>" method="post">
+				
+					<c:if test="${not empty error}">
+						<div class="errorblock">
+							Your login attempt was not successful, try again.<br /> Caused :
+							${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
+						</div>
+					</c:if>
+					
+					<form class="form-horizontal" action="<c:url value='/j_spring_security_check'></c:url>" method="post">
 						<div class="form-group">
 							<div class="col-lg-3 col-lg-offset-1">
 							<label class="control-label">Username: </label>

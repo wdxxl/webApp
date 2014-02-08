@@ -41,9 +41,6 @@
 </head>
 <body>
 <div class="container">
-	<%@ include file="loginHeader.jsp" %>
-</div>
-<div class="container">
 	<div id="alertMsgDiv" class="span12"></div>
 	<h6>Button Group and CSS alert (Alert/Success/Info/Warning/Danger)</h6>
 	<div class="btn-group">

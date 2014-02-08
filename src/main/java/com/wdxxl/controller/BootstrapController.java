@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.wdxxl.service.ISampleService;
-import com.wdxxl.utils.Constants;
 
 @Controller
 @RequestMapping(value="/bootstrap")
@@ -34,12 +33,12 @@ public class BootstrapController {
 			HttpServletResponse httpResponse,
 			Principal principal){
 		logger.debug("[IN] goToWelcome.");
-		
 		logger.debug("Name = "+principal.getName());
 		
 		ModelAndView modelAndView = new ModelAndView("bootstrap/welcome");
 		modelAndView.addObject("msg", "welcome");
-
+		
+		modelAndView.addObject("loginName",principal.getName());
 		logger.debug("[OUT] goToWelcome.");
 		return modelAndView;
 	}

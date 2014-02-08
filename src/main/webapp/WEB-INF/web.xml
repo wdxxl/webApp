@@ -73,12 +73,12 @@
 	</listener>
 	
 	
-	<!-- Session timeout Setting
+	<!-- Session timeout Setting -->
 	<session-config>
 		<session-timeout>1</session-timeout>
 		<tracking-mode>URL</tracking-mode>
 	</session-config>
-	 -->
+	
 	 
 	<!-- Disables Servlet Container welcome file handling. Needed for compatibility with Servlet 3.0 and Tomcat 7.0 -->
 	<!--  

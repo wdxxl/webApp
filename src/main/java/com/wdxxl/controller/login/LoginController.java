@@ -47,16 +47,9 @@ public class LoginController {
 		return modelAndView;
 	}
 	
-	@RequestMapping("/showSpringSecurityLogin") 
-	public ModelAndView showSpringSecurityLogin(HttpServletRequest request){
-		logger.debug("LoginController Show showSpringSecurityLogin.");
-		ModelAndView modelAndView = new ModelAndView("loginSpringSecurity");
-		return modelAndView;
-	}
-	
 	/**
 	 * POST Login User Message, both time to use Spring Validator to validate the login user.
-	 * BindingResult to check validation hasErrors or not��
+	 * BindingResult to check validation hasErrors or not.
 	 * 
 	 * @param httpRequest
 	 * @param httpResponse
@@ -86,11 +79,24 @@ public class LoginController {
 					//still in "http://localhost:9090/webApp/showLogin"
 					//no session message.
 				*/
-				return "redirect:bootstrap/welcome";
+				return "redirect:welcome";
 				//http://localhost:9090/webApp/bootstrap/welcome;jsessionid=BF33928E5616EB26BF3BD075E00D52FC
 			}
 		}
 	}	
+	
+	@RequestMapping("/welcome")
+	public ModelAndView goToWelcome(
+			HttpServletRequest httpRequest, 
+			HttpServletResponse httpResponse){
+		logger.debug("[IN] goToWelcome.");
+		
+		ModelAndView modelAndView = new ModelAndView("welcome");
+		modelAndView.addObject("msg", "welcome");
+		
+		logger.debug("[OUT] goToWelcome.");
+		return modelAndView;
+	}
 	
 	/**
 	 * Identify whether we have the user with the passed loginName, will save the user into session if it does exist
@@ -101,7 +107,7 @@ public class LoginController {
 	boolean isUserExist(String loginName, HttpServletRequest request) {
 		AppUser user = appUserService.getAppUserByLoginName(loginName);
 		if (user != null) {
-			logger.debug("User Existed��");
+			logger.debug("User Existed.");
 			String uuid = UUID.randomUUID().toString();
 			request.getSession(true).setAttribute(Constants.TOKEN_KEY, uuid);
 			//request.getSession(true)

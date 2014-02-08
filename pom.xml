@@ -90,16 +90,10 @@
 	</dependency>
 	
 <!-- Spring Security Start -->
-	<!-- Spring security config (config) -->
+	<!-- Spring security config (config/core/aop3.2.6) -->
 	<dependency>
 		<groupId>org.springframework.security</groupId>
 		<artifactId>spring-security-config</artifactId>
-		<version>3.2.0.RELEASE</version>
-	</dependency>
-	<!-- Spring security core (core/aop3.2.6) -->
-	<dependency>
-		<groupId>org.springframework.security</groupId>
-		<artifactId>spring-security-core</artifactId>
 		<version>3.2.0.RELEASE</version>
 	</dependency>
 	<!-- Spring security web (web) -->

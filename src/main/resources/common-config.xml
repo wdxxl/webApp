@@ -11,13 +11,14 @@
 	<security:http pattern="/resources/**" security="none"/>
 	
 	<security:http>
-	 	<security:intercept-url pattern="/login*" access="ROLE_ANONYMOUS,ROLE_USER"/>
+	 	<security:intercept-url pattern="/bootstrap/welcome" access="ROLE_USER"/>
+	 	<security:intercept-url pattern="/springSecurity/**" access="ROLE_ANONYMOUS,ROLE_USER"/>
 	 	<security:intercept-url pattern="/j_spring_security_check*" access="ROLE_ANONYMOUS,ROLE_USER"/>
 		<security:intercept-url pattern="/**" access="ROLE_ANONYMOUS,ROLE_USER"/>
 	 	<security:form-login default-target-url="/bootstrap/welcome" 
-	 		login-page="/showSpringSecurityLogin" 
-	 		authentication-failure-url="/"/>
-	 	<security:logout logout-success-url="/showSpringSecurityLogin"/>
+	 		login-page="/springSecurity/login" 
+	 		authentication-failure-url="/springSecurity/loginfailed"/>
+	 	<security:logout logout-success-url="/springSecurity/logout"/>
 	</security:http>
 	
 	<security:authentication-manager>
